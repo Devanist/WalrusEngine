@@ -1,6 +1,6 @@
 define([
-    "Utils/modules/isTouchDevice",
-    "Utils/modules/SCEvent"
+    "WalrusEngine/Utils/modules/isTouchDevice",
+    "WalrusEngine/Utils/modules/SCEvent"
     ], function(isTouchDevice, SCEvent){
 
     var Utils = {

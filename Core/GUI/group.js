@@ -1,4 +1,4 @@
-define(['Core/GUI/init.js'], function(GUI){
+define(['WalrusEngine/Core/GUI/init.js'], function(GUI){
 
 	/**
 	 * Klasa grupująca elementy GUI, które NIE są względne wobec siebie.

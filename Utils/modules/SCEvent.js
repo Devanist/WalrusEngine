@@ -1,9 +1,10 @@
 define([],function(){
 	
 	var SCEvent = (function(){
+        var Event = null;
 		if(window.navigator.userAgent.indexOf("MSIE ") > 0 || 
             window.navigator.userAgent.indexOf("Trident/") > 0){
-			var Event = document.createEvent("CustomEvent");
+			Event = document.createEvent("CustomEvent");
 			Event.initCustomEvent("screenChanged", true, true, null);
 		}
 		else{
@@ -17,8 +18,9 @@ define([],function(){
 		}
 		
 		return Event;
+        
 	})();
 		
 	return SCEvent;	
 	
-})
+});

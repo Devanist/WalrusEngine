@@ -1,4 +1,4 @@
-define(['Core/GUI/init'], function(GUI){
+define(['WalrusEngine/Core/GUI/init'], function(GUI){
     
     /**
      * Klasa Sprite jest pochodną klasy GUI.

@@ -1,7 +1,7 @@
 define([
-    'Utils/init',
-    'Game/gameplayer'
-    ], function(Utils, Player){
+    'WalrusEngine/Utils/init'
+    ], 
+    function(Utils){
     
     /**
        Konstruktor klasy Logic, zawierającej całą logikę, zasady gry.
@@ -68,8 +68,8 @@ define([
          * @param {string} name - Nazwa gracza
          * @param {object} player - Obiekt przechowujący informacje o graczu
          */
-        addPlayer : function(name){
-            this._players[name] = new Player(name);
+        addPlayer : function(player){
+            this._players[player.getName()] = player;
         },
 
         /**

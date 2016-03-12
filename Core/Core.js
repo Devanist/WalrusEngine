@@ -1,14 +1,13 @@
 define([
-    'Core/FileLoader',
-    'Game/gamelogic',
-    'Core/GUI/button',
-    'Core/GUI/label',
-    'Core/GUI/splash',
-    'Core/GUI/init',
-    'Core/GUI/sprite',
-    'Core/GUI/group'
+    'WalrusEngine/Core/FileLoader',
+    'WalrusEngine/Core/GUI/button',
+    'WalrusEngine/Core/GUI/label',
+    'WalrusEngine/Core/GUI/splash',
+    'WalrusEngine/Core/GUI/init',
+    'WalrusEngine/Core/GUI/sprite',
+    'WalrusEngine/Core/GUI/group'
     ],
-	function(FileLoader, Logic, Button, Label, Splash, GUI, Sprite, Group){
+	function(FileLoader, Button, Label, Splash, GUI, Sprite, Group){
 			
 	"use strict";
 	
@@ -146,21 +145,21 @@ define([
 			Funkcja rysuje odpowiedni ekran, odpytując klasę Logic.
 		*/
 		renderScreen : function(){
-            this._renderer.clear();
-			if(this._logic.currentScreen() == Logic.SCREEN_MENU){
-				this._renderer.renderMenu(this._fontSize);
-			}
-			if(this._logic.currentScreen() == Logic.SCREEN_GAME){
-				this._squares = this._renderer.renderMap(this._horizontalSize, this._verticalSize);
-				this.renderSigns();
-			}
-			this._renderer.renderGroup(this._GUIList);
+            
 		},
         
         /**
-         * Funkcja wyświetla logo silnika, a następnie uruchamia grę.
+         * Funkcja inicjalizująca właściwą grę. Należy ją rozszerzyć.
          */
-        runGame : function(){
+        init : function(){
+            
+        },
+        
+        /**
+         * Funkcja wyświetla logo silnika, a następnie uruchamia grę.
+         * @param {function} init Funkcja inicjalizująca właściwą grę.
+         */
+        runGame : function(init){
             var that = this;
             
             this._fileLoader.loadEngineAssets(function(){
@@ -179,11 +178,9 @@ define([
                 //that._renderer.fadeIn("all", {r: 0, g: 0, b: 0});
                     
                 setTimeout(function(){
+                    //fadeOut
                     that._GUIList.deleteElement("engine_logo");
-                    that._logic.setScreen(0);
-                    that.setUpScreen();
-                    that.renderScreen();
-                    that._renderer.renderGroup(that._GUIList);
+                    that.init();
                 }, 3000);
             });
         }

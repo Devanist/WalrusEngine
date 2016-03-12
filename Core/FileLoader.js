@@ -1,5 +1,5 @@
-define(['json!Game/sounds.json', 'json!Game/graphics.json'],
-	function (sounds, graphics) {
+define([],
+	function () {
 	
 	/**
 	 * Klasa ładująca zasoby dla gry.
@@ -10,7 +10,7 @@ define(['json!Game/sounds.json', 'json!Game/graphics.json'],
 			{
 				name: "engineLogo",
 				assetType: "graphic",
-				source: "Core/Assets/logo.jpg"
+				source: "WalrusEngine/Core/Assets/logo.jpg"
 			}
 		];
 		this._gameAssets = {

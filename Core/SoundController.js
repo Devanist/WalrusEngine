@@ -1,13 +1,16 @@
-define(['json!Game/sounds.json'],function(cfg){
+define([],function(){
 	
 	/**
 	 * Klasa kontrolująca odtwarzanie i audio w grze.
 	 * @constructor
 	 */
-	var SoundController = function(){
+	var SoundController = function(cfg){
 		this._soundsList = [];
-		this.addSounds();
 		this._soundsPlaying = [];
+        this._cfg = cfg;
+        
+        //Automatyczne załadowanie dźwięków na koniec konstrukcji.
+        this.addSounds();
 	};
 	
 	SoundController.prototype = {
@@ -58,8 +61,8 @@ define(['json!Game/sounds.json'],function(cfg){
 		 * Funkcja dodająca dźwięki do gry.
 		 */
 		addSounds : function(){
-			for(var i = 0; i < cfg.sounds.length; i++){
-				this._soundsList[cfg.sounds[i].name] = new Audio(cfg.sounds[i].path);
+			for(var i = 0; i < this._cfg.sounds.length; i++){
+				this._soundsList[this._cfg.sounds[i].name] = new Audio(this._cfg.sounds[i].path);
 			}
 		},
 		

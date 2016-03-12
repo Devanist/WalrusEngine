@@ -1,4 +1,4 @@
-define(['json!Game/reporter.json'], function (cfg) { 
+define([], function () { 
 	
 	/**
 	 * Klasa odpowiadająca za komunikację z serwerem.
