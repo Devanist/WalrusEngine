@@ -7,7 +7,8 @@ define([], function () {
 		@param {double} w - Szerokosc obiektu canvas
 		@param {double} h - Wysokosc obiektu canvas
 	*/
-	var GfxRenderer = function (ctx, w, h, font, fontSize) {
+	var GfxRenderer = function (ctxType, ctx, w, h, font, fontSize) {
+        this._contextType = ctxType;
 		this._ctx = ctx;
 		this._w = w;
 		this._h = h;
@@ -57,13 +58,28 @@ define([], function () {
 		/**
 			Funkcja czyszcząca ekran - odmalowuje całe płótno na biały kolor
             @param {String} color Kolor do czyszczenia ekranu, domyślnie biały.
+            @param {object} color Kolor do czyszczenia ekranu, domyślnie biały.
 		*/
 		clear: function (color) {
             if(color === undefined || color === null){
-                color = "white";
+                if(this._contextType === "2d"){
+                    color = "white";
+                }
+                else{
+                    color = {
+                        r: 255,
+                        g: 255,
+                        b: 255
+                    };
+                }
             }
-			this._ctx.fillStyle = color;
-			this._ctx.fillRect(0, 0, this._w, this._h);
+            if(this._contextType === "2d"){
+                this._ctx.fillStyle = color;
+                this._ctx.fillRect(0, 0, this._w, this._h);
+            }
+            else{
+                this._ctx.clearColor(color.r, color.g, color.b, 1.0);
+            }
 		},
 		
 		/**
